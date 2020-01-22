@@ -11,7 +11,7 @@ fi
 # Check that vm-id is exists
 virsh dominfo $vmid > /dev/null 2>&1
 if [ $? -eq 1 ]; then
-    echo "[$vmid] vm id or node name not found"
+    echo "[$vmid] vm id or node name not found."
     echo "You can check with \"virsh list\""
     exit 1
 fi
