@@ -20,7 +20,7 @@ virt-install \
   --virt-type kvm \
   --ram=512 \
   --vcpus=1 \
-  --disk path=/var/lib/libvirt/images/vyos-$name-$I.img,bus=virtio,size=4 \
+  --disk path=/var/lib/libvirt/images/vyos-$name-$I.qcow2,bus=virtio,size=4 \
   --graphics none \
   --noautoconsole \
   --cdrom $ISO \
@@ -30,5 +30,7 @@ virt-install \
 virsh list &
 echo "done"
 done
+
+echo
 
 exit
