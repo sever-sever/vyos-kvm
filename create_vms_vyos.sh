@@ -3,8 +3,8 @@
 # Path to ISO file
 ISO=/home/sever/Downloads/ISO/vyos-rolling-latest.iso
 
-# How many instalce will be created
-number_instances=1
+# How many instance will be created
+number_instances=2
 name=$(date +%Y-%m-%d-%T)
 vmid=VyOS-$name
 user=vyos

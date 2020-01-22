@@ -2,6 +2,20 @@
 
 vmid=$1
 
+# Check that the vm-id argument is set
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <node id or node name> (virsh list)"
+    exit 1
+fi
+
+# Check that vm-id is exists
+virsh dominfo $vmid > /dev/null 2>&1
+if [ $? -eq 1 ]; then
+    echo "[$vmid] vm id or nat not found"
+    echo "You can check with \"virsh list\""
+    exit 1
+fi
+
 user="vyos"
 new_password="vyos123"
 
