@@ -2,29 +2,6 @@
 
 vm_name=$1
 
-# Check that the vm-name argument is set
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <Vm name> (virsh list --all)"
-    exit 1
-fi
-
-vm_state=$(virsh list --all | grep "$vm_name" | awk '{print $3}')
-
-# Check that vmname is exists
-virsh dominfo $vm_name > /dev/null 2>&1
-if [ $? -eq 1 ]; then
-    echo "[$vm_name] vm id or node name not found."
-    echo "You can check with \"virsh list\""
-    exit 1
-fi
-
-
-
-if [ "$vm_state" != "running" ]; then
-  virsh start $vm_name
-  sleep 2
-  virsh list | grep $vm_name
-fi
 
 user=vyos
 pass=vyos123
@@ -51,6 +28,5 @@ expect <<EOF
   expect "vyos@vyos*" {send "run show interface \r"}
   expect "vyos@vyos*" {send "exit\r"}
   expect "vyos@vyos*" {send "exit\r"}
-
 
 EOF

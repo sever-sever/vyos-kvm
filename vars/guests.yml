@@ -1,0 +1,28 @@
+---
+guests:
+    - name: vyos01
+      url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
+      cpu: 1
+      mem: 512
+      virt_type: kvm
+      virt_hypervisor: hvm
+      os:
+        type: linux
+        variant: debian9
+      disk:
+          size: 4
+          path: /var/lib/libvirt/images
+
+    - name: vyos02
+      url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
+      cpu: 1
+      mem: 512
+      virt_type: kvm
+      virt_hypervisor: hvm
+      os:
+        type: linux
+        variant: debian9
+      disk:
+          size: 4
+          path: /var/lib/libvirt/images
+

@@ -1,0 +1,62 @@
+---
+- name: create VMs
+  hosts: localhost
+
+  vars_files:
+      - vars/guests.yml
+
+  tasks:
+      - name: Get list of VMs
+        virt:
+          command: "list_vms"
+        register: virt_vms
+
+      - name: Create vm
+        command: virt-install -n {{ item.name }}
+                 --ram {{ item.mem }}
+                 --vcpus {{ item.cpu }}
+                 --cdrom {{ item.url }}
+                 --os-type {{ item.os.type }}
+                 --os-variant {{ item.os.variant }}
+                 --network network=default
+                 --graphics vnc
+                 --{{item.virt_hypervisor}}
+                 --virt-type {{ item.virt_type }}
+                 --disk path={{item.disk.path}}/{{item.name}}.qcow2,bus=virtio,size={{item.disk.size}}
+                 --noautoconsole
+        when: item.name not in virt_vms.list_vms
+        with_items: "{{ guests }}"
+
+      - name: get guest info
+        virt: command=info
+        register: virt_info
+
+      - name: make sure all vms are running
+        virt:
+          name: "{{ item.name }}"
+          state: running
+        with_items: "{{ guests }}"
+
+      - name: Wait for VMs is loaded
+        pause: seconds=35
+#        when: libvirtd.changed
+
+      - name: Install VyOS
+        script: scripts/connect_console_install.sh {{ item.name }}
+        with_items: "{{ guests }}"
+
+      - name: make sure all vms are running
+        virt:
+          name: "{{ item.name }}"
+          state: running
+        with_items: "{{ guests }}"
+
+      - name: Wait for VMs is loaded
+        pause: seconds=35
+
+      - name: Post Install Commands
+        script: scripts/connect_console_post_install.sh {{ item.name }}
+        with_items: "{{ guests }}"
+
+
+
