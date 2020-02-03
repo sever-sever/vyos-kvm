@@ -5,6 +5,11 @@
   vars_files:
       - vars/guests.yml
 
+  vars:
+    default_user: vyos
+    new_user: sever
+    new_vyos_pass: superpass
+
   tasks:
       - name: Get list of VMs
         virt:
@@ -38,11 +43,11 @@
         with_items: "{{ guests }}"
 
       - name: Wait for VMs is loaded
-        pause: seconds=35
-#        when: libvirtd.changed
+        pause: seconds=37
+##        when: libvirtd.changed
 
       - name: Install VyOS
-        script: scripts/connect_console_install.sh {{ item.name }}
+        command: scripts/connect_console_install.sh {{ item.name }} {{default_user}} {{new_user}} {{new_vyos_pass}}
         with_items: "{{ guests }}"
 
       - name: make sure all vms are running
@@ -55,7 +60,7 @@
         pause: seconds=35
 
       - name: Post Install Commands
-        script: scripts/connect_console_post_install.sh {{ item.name }}
+        command: scripts/connect_console_post_install.sh {{ item.name }} {{default_user}} {{new_vyos_pass}}
         with_items: "{{ guests }}"
 
 

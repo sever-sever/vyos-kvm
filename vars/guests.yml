@@ -2,6 +2,7 @@
 guests:
     - name: vyos01
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
+#      url: /home/sever/Downloads/ISO/vyos-1.2.4-amd64.iso
       cpu: 1
       mem: 512
       virt_type: kvm
@@ -12,6 +13,7 @@ guests:
       disk:
           size: 4
           path: /var/lib/libvirt/images
+      iface: eth0
 
     - name: vyos02
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
@@ -25,4 +27,4 @@ guests:
       disk:
           size: 4
           path: /var/lib/libvirt/images
-
+      iface: eth0
