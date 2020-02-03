@@ -1,5 +1,5 @@
 # vyos-kvm
-Adding VyOS instances with ansible. Need intstall pkg "expect"
+Adding VyOS instances with ansible. Require intstall pkg "expect"
 
 Install VM's and provide ip address on eth0 via dhcp and ssh access to them via ssh-key.
 
