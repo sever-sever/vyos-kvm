@@ -2,7 +2,9 @@
 
 vm_name=$1
 default_user=$2
-new_vyos_pass=$3
+default_pass=$2
+new_user=$3
+new_vyos_pass=$4
 
 ssh_key_id=$(cat ~/.ssh/id_rsa.pub | awk '{print $3}')
 ssh_key_type=$(cat ~/.ssh/id_rsa.pub | awk '{print $1}')

@@ -60,7 +60,7 @@
         pause: seconds=35
 
       - name: Post Install Commands
-        command: scripts/connect_console_post_install.sh {{ item.name }} {{default_user}} {{new_vyos_pass}}
+        command: scripts/connect_console_post_install.sh {{ item.name }} {{default_user}} {{new_user}} {{new_vyos_pass}}
         with_items: "{{ guests }}"
 
 
