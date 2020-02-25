@@ -1,9 +1,14 @@
 ---
+
+default_user: vyos
+new_user: sever
+new_vyos_pass: superpass
+
 guests:
-    - name: vyos-rol01
+    - name: vyos-rtr01
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
       cpu: 1
-      mem: 256
+      mem: 512
       virt_type: kvm
       virt_hypervisor: hvm
       os:
@@ -15,10 +20,10 @@ guests:
       iface: eth0
       address: 192.168.122.11
 
-    - name: vyos-rol02
+    - name: vyos-rtr02
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
       cpu: 1
-      mem: 256
+      mem: 512
       virt_type: kvm
       virt_hypervisor: hvm
       os:

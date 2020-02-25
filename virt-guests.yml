@@ -5,11 +5,6 @@
   vars_files:
       - vars/guests.yml
 
-  vars:
-      default_user: vyos
-      new_user: sever
-      new_vyos_pass: superpass
-
   tasks:
       - name: Get list of VMs
         virt:
