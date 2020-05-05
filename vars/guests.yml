@@ -5,32 +5,33 @@ new_user: sever
 new_vyos_pass: superpass
 
 guests:
-    - name: vyos-rtr01
+    - name: r-roll01
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
       cpu: 1
-      mem: 512
+      mem: 2048
       virt_type: kvm
       virt_hypervisor: hvm
       os:
           type: linux
           variant: debian9
       disk:
-          size: 4
+          size: 8
           path: /var/lib/libvirt/images
       iface: eth0
       address: 192.168.122.11
 
-    - name: vyos-rtr02
-      url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso
+    - name: r-1.2.5
+      url: /home/sever/Downloads/ISO/vyos-1.2.5-amd64.iso
       cpu: 1
-      mem: 512
+      mem: 2048
       virt_type: kvm
       virt_hypervisor: hvm
       os:
           type: linux
           variant: debian9
       disk:
-          size: 4
+          size: 8
           path: /var/lib/libvirt/images
       iface: eth0
       address: 192.168.122.12
+

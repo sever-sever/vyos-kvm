@@ -25,6 +25,7 @@ expect <<EOF
   expect "vyos@vyos*" {send "set system login user $new_user authentication public-keys $ssh_key_id type $ssh_key_type \r"}
   expect "vyos@vyos*" {send "set interfaces ethernet eth0 address $ipaddr/24 \r"}
   expect "vyos@vyos*" {send "set protocols static route 0.0.0.0/0 next-hop 192.168.122.1 \r"}
+  expect "vyos@vyos*" {send "set system name-server 1.1.1.1 \r"}
   expect "vyos@vyos*" {send "set system host-name $node_name \r"}
   expect "vyos@vyos*" {send "set service ssh \r"}
   expect "vyos@vyos*" {send "set service ssh disable-host-validation \r"}
