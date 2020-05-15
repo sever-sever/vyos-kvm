@@ -1,9 +1,5 @@
 ---
 
-default_user: vyos
-new_user: sever
-new_vyos_pass: superpass
-
 guests:
     - name: r-roll01
       url: /home/sever/Downloads/ISO/vyos-rolling-latest.iso

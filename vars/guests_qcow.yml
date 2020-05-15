@@ -1,0 +1,16 @@
+---
+
+guests:
+    - name: r-1-test
+      cpu: 1
+      mem: 2048
+      virt_type: kvm
+      virt_hypervisor: hvm
+      os:
+          type: linux
+          variant: debian9
+      disk:
+          path: /var/lib/libvirt/images
+      iface: eth0
+      address: 192.168.122.11
+
