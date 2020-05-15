@@ -11,6 +11,8 @@ Params of VMs on base QCOW2 in the file vars/guests_qcow.yml
 # Run playbook for deploy VMs from iso
 ansible-playbook create_vm_from_iso.yml
 
-# Run playbook for deploy VMs from qcow2 (requires sudo or access to directory /var/lib/libvirt/images/)
+# Run playbook for deploy VMs from qcow2 
+(requires sudo or access to directory /var/lib/libvirt/images/)
+
 sudo ansible-playbook create_vm_from_qcow.yml
 
