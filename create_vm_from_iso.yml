@@ -1,6 +1,7 @@
 ---
 - name: create VMs
   hosts: localhost
+  gather_facts: no
 
   vars:
     default_user: vyos
