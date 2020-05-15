@@ -73,7 +73,7 @@
         with_items: "{{ guests }}"
 
       - name: Wait for VMs is loaded
-        pause: seconds=10
+        pause: seconds=15
 
       - name: Post Install Commands
         command:
